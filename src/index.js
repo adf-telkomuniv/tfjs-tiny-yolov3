@@ -14,19 +14,19 @@ export default class TinyYoloV3 {
 		this.nClass = coco_classes.length
 	}
 	
-	async load( url ) {
+	async load( url = 'https://raw.githubusercontent.com/adf-telkomuniv/tfjs-tiny-yolov3/master/model/model.json' ) {
 		this.model = await tf.loadLayersModel(url)
 	}
 	
-	async predict(image, flipHorizontal=true) {
-		this.imgSize = image.constructor.name === 'HTMLVideoElement' ? [image.videoHeight, image.videoWidth] : [image.height, image.width]
+	async predict(input, flipHorizontal=true) {
+		this.imgSize = input.constructor.name === 'HTMLVideoElement' ? [input.videoHeight, input.videoWidth] : [input.height, input.width]
 		
 		let features = tf.tidy(() => {			
 			const canvas = document.createElement('canvas')
 			canvas.width = 416
 			canvas.height = 416	
 			const ctx = canvas.getContext('2d')
-			ctx.drawImage(image, 0, 0, 416, 416)
+			ctx.drawImage(input, 0, 0, 416, 416)
 
 			let imageTensor = tf.browser.fromPixels(canvas, 3)
 			imageTensor = imageTensor.expandDims(0).toFloat().div(tf.scalar(255))
@@ -41,9 +41,10 @@ export default class TinyYoloV3 {
 		return features		
 	}
 	
-	async detectAndBox(image, flipHorizontal=true){
+	
+	async detectAndBox(input, flipHorizontal=true){
 
-		const features = await this.predict(image, flipHorizontal)
+		const features = await this.predict(input, flipHorizontal)
 		
 		let [boxes, boxScores] = tf.tidy(() => {
 			let nFeature = features.length
