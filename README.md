@@ -1,6 +1,6 @@
 # Tiny-YOLOv3 using TensorFlow.js
 
-[`Tiny YOLO`](https://pjreddie.com/darknet/yolo/) object detection with the latest version (v1.0.0) of [Tensorflow.js](https://js.tensorflow.org/).
+[`Tiny YOLO`](https://pjreddie.com/darknet/yolo/) object detection with the latest version (v1.0.0) of [Tensorflow.js](https://www.tensorflow.org/js).
 
 ## Install
 ```
