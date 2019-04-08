@@ -1,8 +1,8 @@
 {
   "name": "tfjs-tiny-yolov3",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "js library for tiny-YOLOv3 using tfjs",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
