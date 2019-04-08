@@ -22,7 +22,6 @@ import TinyYoloV3 from 'tfjs-tiny-yolov3';
 const model = new TinyYoloV3();
 
 //Optional settings
-
 const model = new TinyYoloV3({
 	nObject = 20, 
 	scoreTh = .2,  
@@ -42,6 +41,7 @@ await model.load("https://.../model.json")
 
 
 #### Get Output Feature Only
+```
 @param image
 	Supported input html element:
 	- img
@@ -49,7 +49,7 @@ await model.load("https://.../model.json")
 	- video
 @param flipHorizontal = true
 	flip the image if input source is webcam
-
+```
 ```javascript
 const features = await model.predict(image, flipHorizontal);
 
